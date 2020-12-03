@@ -1,17 +1,25 @@
 package com.app.bar.appbar.controller;
 
+import com.app.bar.appbar.repository.entity.Producto;
+import com.app.bar.appbar.service.IproductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class productoController {
 
-    @GetMapping("/productos")
-    public String Consulta(){
+    @Autowired
+    IproductoService iproductoService;
 
-        return null;
+    @GetMapping("/productos")
+    List<Producto> Consulta(){
+
+        return iproductoService.findall();
     }
 
 
